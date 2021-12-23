@@ -5,6 +5,9 @@ https://github.com/yooneskh/vite-tauri-template
 ESLint+Prettier:
 https://vueschool.io/articles/vuejs-tutorials/eslint-and-prettier-with-vite-and-vue-js-3/
 
+Vuex:
+https://github.com/infantiablue/vhnews
+
 settings.json:
     "editor.formatOnSave": true,
     
