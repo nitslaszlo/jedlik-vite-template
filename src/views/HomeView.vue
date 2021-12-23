@@ -1,6 +1,6 @@
 <script setup>
-import Counter from "../components/Counter.vue";
-import ColorChecker from "../components/ColorChecker.vue";
+import Counter from '../components/Counter.vue';
+import ColorChecker from '../components/ColorChecker.vue';
 </script>
 
 <template>
