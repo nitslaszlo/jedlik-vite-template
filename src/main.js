@@ -1,19 +1,12 @@
-import { createApp } from 'vue';
+import { createApp } from "vue";
 
-import vuetify from './plugins/vuetify';
-import routes from './routes';
-import App from './app.vue';
-
-import 'vue-global-api/ref';
-import 'vue-global-api/reactive';
-import 'vue-global-api/computed';
-import 'vue-global-api/watch';
-import 'vue-global-api/watchEffect';
-
+import vuetify from "./plugins/vuetify";
+import routes from "./routes";
+import App from "./app.vue";
 
 const app = createApp(App);
 
 app.use(routes);
 app.use(vuetify);
 
-app.mount('#app');
+app.mount("#app");

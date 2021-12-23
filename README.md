@@ -1,5 +1,23 @@
 # Vite Template
-Th
+Base:
+https://github.com/yooneskh/vite-tauri-template
+
+ESLint+Prettier:
+https://vueschool.io/articles/vuejs-tutorials/eslint-and-prettier-with-vite-and-vue-js-3/
+
+settings.json:
+    "editor.formatOnSave": true,
+    
+    "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["javascript", "vue"],
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 
 ## Vite.js
 [Vite.js](https://vitejs.dev/) is a new modern bundler for javascript which is blazing fast and includes many sensible defaults.
