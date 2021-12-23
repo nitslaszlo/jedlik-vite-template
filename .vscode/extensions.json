@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "johnsoncodehk.volar",
+        "esbenp.prettier-vscode",
+        "pkief.material-icon-theme",
+        "dbaeumer.vscode-eslint",
+        "coenraads.bracket-pair-colorizer-2",
+        "antfu.iconify"
+    ]
+}
