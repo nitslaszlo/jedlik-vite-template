@@ -1,12 +1,12 @@
 {
-  "name": "vite-template",
-  "version": "1.2.0",
-  "description": "Vite  + Vue 3 + Vuetify 3 desktop app template",
+  "name": "jedlik-vite-template",
+  "version": "1.0.0",
+  "description": "Vite + Vue3 + Vuetify3 + Vuex4 template",
   "keywords": [
     "vite",
-    "vue",
-    "vuetify",
-    "desktop"
+    "vue3",
+    "vuetify3",
+    "vuex4"
   ],
   "scripts": {
     "dev": "vite --port 8080 --open",
@@ -20,7 +20,8 @@
     "vue": "3.2.25",
     "vue-global-api": "0.4.1",
     "vue-router": "4.0.11",
-    "vuetify": "3.0.0-alpha.12"
+    "vuetify": "3.0.0-alpha.12",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "2.0.1",
@@ -35,7 +36,7 @@
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/yooneskh/vite-tauri-template"
+    "url": "https://github.com/nitslaszlo"
   },
-  "license": "ISC"
+  "license": "MIT"
 }
