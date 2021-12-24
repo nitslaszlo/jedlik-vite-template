@@ -12,6 +12,9 @@ export default defineConfig({
     define: {
         'process.env': {},
     },
+    build: {
+        sourcemap: true,
+    },
     rollupOptions: {
         output: {
             inlineDynamicImports: true,
