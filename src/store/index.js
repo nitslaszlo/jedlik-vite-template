@@ -1,7 +1,6 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
 const api = axios.create({
-    withCredentials: true,
     baseURL: 'https://jedlik-expr-mongoose-backend.herokuapp.com/',
 });
 
@@ -36,12 +35,21 @@ export default createStore({
     },
     actions: {
         async loginUser(context) {
-            api.post('auth/login', {
-                email: 'student001@jedlik.eu',
-                password: 'student001',
-            })
-                .then(() => {
+            api.post(
+                'auth/login',
+                {
+                    email: 'student001@jedlik.eu',
+                    password: 'student001',
+                },
+                { withCredentials: true, }
+            )
+                .then((res) => {
                     console.log('Authenticated');
+                    console.log(res.headers);
+                    localStorage.setItem('JWT', res.headers['Set-Cookie']);
+                    let authToken = localStorage.getItem('JWT');
+                    console.log(authToken);
+                    // this.$cookie.set('token', res.data.token);
                     context.commit('setLoggedIn', true);
                 })
                 .catch(() => {
