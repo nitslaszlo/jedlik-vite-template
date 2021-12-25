@@ -1,7 +1,9 @@
 import { createStore } from 'vuex';
+
 import axios from 'axios';
 const api = axios.create({
     baseURL: 'https://jedlik-expr-mongoose-backend.herokuapp.com/',
+    withCredentials: true,
 });
 
 // async function* asyncGetter(data) {
@@ -35,21 +37,23 @@ export default createStore({
     },
     actions: {
         async loginUser(context) {
-            api.post(
-                'auth/login',
-                {
-                    email: 'student001@jedlik.eu',
-                    password: 'student001',
-                },
-                { withCredentials: true, }
-            )
+            api.post('auth/login', {
+                email: 'student001@jedlik.eu',
+                password: 'student001',
+            })
                 .then((res) => {
                     console.log('Authenticated');
-                    console.log(res.headers);
-                    localStorage.setItem('JWT', res.headers['Set-Cookie']);
-                    let authToken = localStorage.getItem('JWT');
-                    console.log(authToken);
-                    // this.$cookie.set('token', res.data.token);
+                    console.log(res);
+                    console.log(api.defaults.headers);
+                    // Set default headers to common_axios ( as Instance )
+                    // console.log(res.headers['authorization']);
+                    // api.defaults.headers.common['Cookie'] = res.headers['authorization'];
+                    // Check your Header
+                    // console.log(api.defaults.headers)
+                    // localStorage.setItem('JWT', res.headers['set-cookie']);
+                    // let authToken = localStorage.getItem('JWT');
+                    // console.log(authToken);
+                    // this.$cookie.set('token', authToken);
                     context.commit('setLoggedIn', true);
                 })
                 .catch(() => {
@@ -61,11 +65,12 @@ export default createStore({
         async fetchPosts(context) {
             // init local items storage
             context.commit('setLoading', true);
-            api.get('report')
+            // let authToken = localStorage.getItem('JWT');
+            api.get('posts')
                 .then((res) => {
                     // context.commit('loadPosts', res.data);
                     context.commit('setLoading', false);
-                    console.log(res.data);
+                    console.log('postok:' + res.data);
                 })
                 .catch((error) => {
                     console.error('hiba: ' + error);

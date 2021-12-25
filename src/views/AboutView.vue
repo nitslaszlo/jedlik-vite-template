@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
+
+onMounted(() => {
+    console.log('about view is mounted!');
+    store.dispatch('fetchPosts');
+});
+</script>
 
 <template>
     <v-container class="page text-center">

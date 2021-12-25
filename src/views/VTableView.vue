@@ -100,8 +100,8 @@ const desserts = [
 ];
 onMounted(() => {
     store.dispatch('loginUser');
-    console.log('Component is mounted!');
-    store.dispatch('fetchPosts');
+    console.log('vtable view is mounted!');
+    // store.dispatch('fetchPosts');
 });
 </script>
 
