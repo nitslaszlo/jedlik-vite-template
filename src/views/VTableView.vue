@@ -1,4 +1,7 @@
 <script setup>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
 // const headers = [
 //     {
 //         text: 'Dessert (100g serving)',
@@ -95,6 +98,11 @@ const desserts = [
         iron: '6%',
     },
 ];
+onMounted(() => {
+    store.dispatch('loginUser');
+    console.log('Component is mounted!');
+    store.dispatch('fetchPosts');
+});
 </script>
 
 <template>
