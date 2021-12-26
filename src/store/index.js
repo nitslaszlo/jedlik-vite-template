@@ -45,15 +45,6 @@ export default createStore({
                     console.log('Authenticated');
                     console.log(res);
                     console.log(api.defaults.headers);
-                    // Set default headers to common_axios ( as Instance )
-                    // console.log(res.headers['authorization']);
-                    // api.defaults.headers.common['Cookie'] = res.headers['authorization'];
-                    // Check your Header
-                    // console.log(api.defaults.headers)
-                    // localStorage.setItem('JWT', res.headers['set-cookie']);
-                    // let authToken = localStorage.getItem('JWT');
-                    // console.log(authToken);
-                    // this.$cookie.set('token', authToken);
                     context.commit('setLoggedIn', true);
                 })
                 .catch(() => {
