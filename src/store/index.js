@@ -21,12 +21,20 @@ export default createStore({
         loggedIn: false,
         posts: [],
     },
+    getters: {
+        getPosts(state) {
+            return state.posts;
+        },
+        getLoggedIn(state) {
+            return state.loggedIn;
+        },
+    },
     mutations: {
         setLoading(state, status) {
             state.loading = status;
         },
         loadPosts(state, posts) {
-            state.posts = [...state.posts, ...posts];
+            state.posts = [...posts];
         },
         clearPosts(state) {
             state.posts = [];
@@ -41,11 +49,22 @@ export default createStore({
                 email: 'student001@jedlik.eu',
                 password: 'student001',
             })
-                .then((res) => {
+                .then(() => {
                     console.log('Authenticated');
-                    console.log(res);
-                    console.log(api.defaults.headers);
+                    // console.log(res);
                     context.commit('setLoggedIn', true);
+                })
+                .catch(() => {
+                    console.log('Error on Authentication');
+                    context.commit('setLoggedIn', false);
+                });
+        },
+        async logOut(context) {
+            api.post('auth/logout')
+                .then(() => {
+                    console.log('Log out');
+                    // console.log(res);
+                    context.commit('setLoggedIn', false);
                 })
                 .catch(() => {
                     console.log('Error on Authentication');
@@ -56,12 +75,12 @@ export default createStore({
         async fetchPosts(context) {
             // init local items storage
             context.commit('setLoading', true);
-            // let authToken = localStorage.getItem('JWT');
             api.get('posts')
                 .then((res) => {
-                    // context.commit('loadPosts', res.data);
+                    if (res && res.data) {
+                        context.commit('loadPosts', res.data);
+                    }
                     context.commit('setLoading', false);
-                    console.log('postok:' + res.data);
                 })
                 .catch((error) => {
                     console.error('hiba: ' + error);
