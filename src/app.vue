@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-const drawer = ref(false);
-// const selectedItem = ref(1);
+const drawer = ref(true);
 // Search icons: https://materialdesignicons.com/
 const menuItems = ref([
     {
