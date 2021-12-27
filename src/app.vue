@@ -55,6 +55,7 @@ const links = ref([
                     :title="item.text"
                     :to="item.route"
                     link
+                    @click="drawer = !$isMobile()"
                 ></v-list-item>
             </v-list>
             <p class="text-center my-3">Links</p>
@@ -67,6 +68,7 @@ const links = ref([
                     :href="item.link"
                     target="_blank"
                     link
+                    @click="drawer = !$isMobile()"
                 ></v-list-item>
             </v-list>
         </v-navigation-drawer>
