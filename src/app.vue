@@ -1,6 +1,9 @@
 <script setup>
-import { ref } from 'vue';
-const drawer = ref(true);
+import { getCurrentInstance, ref } from 'vue';
+
+const app = getCurrentInstance();
+
+const drawer = ref(!app.$isMobile);
 // Search icons: https://materialdesignicons.com/
 const menuItems = ref([
     {
