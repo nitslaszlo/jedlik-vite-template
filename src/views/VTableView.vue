@@ -1,11 +1,12 @@
 <script setup>
 import { onMounted, computed } from 'vue';
 import { useStore } from 'vuex';
+
 const store = useStore();
-const posts = computed(() => store.getters.getPosts);
+const posts = computed(() => store.getters['posts/getPosts']);
 
 onMounted(() => {
-    store.dispatch('fetchPosts');
+    store.dispatch('posts/fetchPosts');
 });
 </script>
 
