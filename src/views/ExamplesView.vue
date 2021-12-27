@@ -80,7 +80,7 @@ function torolNap() {
 
         <color-checker class="mt-3" />
 
-        <v-card class="mt-3">
+        <v-container class="ma-3">
             <v-row>
                 <v-col cols="12" md="6">
                     <v-text-field
@@ -97,9 +97,13 @@ function torolNap() {
                         hint="Maximum 10 darab x engedélyezett"
                         label="10 darab x"
                     ></v-text-field>
-                    <h3>Hello {{ r.nev }} {{ r.xek }} {{ r.felkialtojelek }}</h3>
-                    <p>Felkiáltójelek darabszáma: {{ r.felkialtojelDarab }}</p>
-                    <v-row justify="center">
+                    <v-alert icon="mdi-import" class="ma-3" color="green" dense elevation="9" 
+                        >Hello {{ r.nev }} {{ r.xek }} {{ r.felkialtojelek }}</v-alert
+                    >
+                    <v-alert icon="mdi-alert-box-outline" class="ma-3" color="yellow" dense elevation="9"
+                        >Felkiáltójelek darabszáma: {{ r.felkialtojelDarab }}</v-alert
+                    >
+                    <v-row justify="center" class="ma-5">
                         <v-btn
                             class="mx-3"
                             color="primary"
@@ -120,12 +124,14 @@ function torolNap() {
                 </v-col>
 
                 <v-col cols="12" md="6">
-                    <ol>
-                        <li v-for="nap in r.napok" :key="nap">{{ nap }}</li>
-                    </ol>
+                    <v-alert class="ma-3"  color="orange" dense shaped elevation="9">
+                        <ol class="pa-3">
+                            <li v-for="nap in r.napok" :key="nap">{{ nap }}</li>
+                        </ol>
+                    </v-alert>
                     <v-text-field
                         v-model="r.inputNap"
-                        class="mb-6"
+                        class="mb-1"
                         :rules="[napEllenorzese() || 'Ügyelj a helyesírásra!']"
                         hint="Adjad meg egy nap nevét!"
                         label="Kérem a nap nevét!"
@@ -141,7 +147,7 @@ function torolNap() {
                             >Nap hozzáadása</v-btn
                         >
                         <v-btn
-                            class="mx-3 mb-15"
+                            class="mx-3"
                             color="primary"
                             :disabled="!joNapTorolni(iNap)"
                             elevation="5"
@@ -151,7 +157,7 @@ function torolNap() {
                     </v-row>
                 </v-col>
             </v-row>
-        </v-card>
+        </v-container>
 
         <v-btn block flat color="info" class="mt-3" to="/about"> Go To About Us </v-btn>
     </v-container>
