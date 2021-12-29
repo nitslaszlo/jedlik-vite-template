@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from 'vue';
+import { useDisplay } from 'vuetify';
 
 const drawer = ref(false);
+const isMobileDevice = useDisplay().mobile.value;
+
 // Search icons: https://materialdesignicons.com/
 const menuItems = ref([
     {
@@ -18,6 +21,11 @@ const menuItems = ref([
         icon: 'mdi-table',
         text: 'v-table',
         route: '/vtable',
+    },
+    {
+        icon: 'mdi-grid',
+        text: 'Grid demo',
+        route: '/grid',
     },
     {
         icon: 'mdi-account',
@@ -56,7 +64,7 @@ const links = ref([
                     :title="item.text"
                     :to="item.route"
                     link
-                    @click="drawer = !$isMobile()"
+                    @click="drawer = !isMobileDevice"
                 ></v-list-item>
             </v-list>
             <p class="text-center my-3">Links</p>
@@ -69,7 +77,7 @@ const links = ref([
                     :href="item.link"
                     target="_blank"
                     link
-                    @click="drawer = !$isMobile()"
+                    @click="drawer = !isMobileDevice"
                 ></v-list-item>
             </v-list>
         </v-navigation-drawer>

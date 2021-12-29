@@ -3,7 +3,6 @@ import { createApp } from 'vue';
 import vuetify from './plugins/vuetify';
 import routes from './routes';
 import store from './store';
-import VueMobileDetection from "vue-mobile-detection";
 import App from './app.vue';
 
 const app = createApp(App);
@@ -12,6 +11,5 @@ app.config.devtools = true;
 app.use(routes);
 app.use(store);
 app.use(vuetify);
-app.use(VueMobileDetection);
 
 app.mount('#app');

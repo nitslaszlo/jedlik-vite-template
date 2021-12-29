@@ -23,6 +23,9 @@ settings.json:
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
+Vuetify versions:<br>
+npm show vuetify versions
+
 ## vue3-table-lite
 https://linmasahiro.github.io/vue3-table-lite/
 
