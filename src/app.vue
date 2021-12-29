@@ -23,6 +23,11 @@ const menuItems = ref([
         route: '/vtable',
     },
     {
+        icon: 'mdi-table',
+        text: 'vue3-table-light',
+        route: '/v3table',
+    },
+    {
         icon: 'mdi-grid',
         text: 'Grid demo',
         route: '/grid',

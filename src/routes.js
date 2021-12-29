@@ -6,6 +6,7 @@ import AccountView from './views/AccountView.vue';
 import VTableView from './views/VTableView.vue';
 import AboutView from './views/AboutView.vue';
 import GridView from './views/GridView.vue';
+import Vue3TableLiteView from './views/Vue3TableLiteView.vue'
 
 export default createRouter({
     history: createWebHistory(),
@@ -25,6 +26,10 @@ export default createRouter({
         {
             path: '/vtable',
             component: VTableView,
+        },
+        {
+            path: '/v3table',
+            component: Vue3TableLiteView,
         },
         {
             path: '/grid',
