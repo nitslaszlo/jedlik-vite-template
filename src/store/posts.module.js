@@ -74,7 +74,6 @@ export default {
                 .catch((error) => {
                     console.error('hiba: ' + error);
                 });
-            // make the request
         },
     },
 };

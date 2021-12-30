@@ -23,7 +23,7 @@ const menuItems = ref([
         route: '/vtable',
     },
     {
-        icon: 'mdi-table',
+        icon: 'mdi-table-refresh',
         text: 'vue3-table-light',
         route: '/v3table',
     },

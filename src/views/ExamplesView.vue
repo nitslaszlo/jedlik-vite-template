@@ -23,7 +23,7 @@ setInterval(() => {
     }
     if (wrongCharPos !== -1) {
         if (r.xek.length <= 10) {
-            r.xek = this.xek.replace(r.xek[wrongCharPos], 'X');
+            r.xek = r.xek.replace(r.xek[wrongCharPos], 'X');
         } else {
             r.xek = r.xek.replace(r.xek[wrongCharPos], '');
         }
