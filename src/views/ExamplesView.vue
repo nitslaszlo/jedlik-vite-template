@@ -139,7 +139,7 @@ function torolNap() {
 
                     <v-row justify="center">
                         <v-btn
-                            class="mx-3"
+                            class="ma-3"
                             color="primary"
                             :disabled="!joNapHozzadni(iNap)"
                             elevation="5"
@@ -147,7 +147,7 @@ function torolNap() {
                             >Nap hozzáadása</v-btn
                         >
                         <v-btn
-                            class="mx-3"
+                            class="ma-3"
                             color="primary"
                             :disabled="!joNapTorolni(iNap)"
                             elevation="5"
