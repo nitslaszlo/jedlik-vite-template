@@ -8,6 +8,9 @@ export default {
         posts: [],
     },
     getters: {
+        getLoading(state) {
+            return state.loading;
+        },
         getPosts(state) {
             return state.posts;
         },
@@ -56,6 +59,7 @@ export default {
                 })
                 .catch((error) => {
                     console.error('hiba: ' + error);
+                    context.commit('setLoading', false);
                 });
             // make the request
         },
@@ -73,6 +77,7 @@ export default {
                 })
                 .catch((error) => {
                     console.error('hiba: ' + error);
+                    context.commit('setLoading', false);
                 });
         },
     },

@@ -5,24 +5,23 @@ import { useStore } from 'vuex';
 const store = useStore();
 const posts = computed(() => store.getters['posts/getPosts']);
 const numberOfPosts = computed(() => store.getters['posts/getNumberOfPosts']);
+const isLoading = computed(() => store.getters['posts/getLoading']);
+
+let checkedRowsIds = [];
 
 onMounted(() => {
-    store.dispatch('posts/fetchPaginatedPosts', {
-        offset: '0',
-        limit: '10',
-        order: 'title',
-        sort: '1',
-    });
+    doSearch('0', '10', 'title', 'asc');
 });
 
 const table = reactive({
-    isLoading: false,
+    hasCheckbox: true,
+    isLoading: isLoading,
     columns: [
         {
             label: 'ID',
             field: '_id',
             width: '5%',
-            sortable: true,
+            sortable: false,
             isKey: true,
             display: function (row) {
                 return row._id.slice(5, 9);
@@ -32,7 +31,7 @@ const table = reactive({
             label: 'Aut',
             field: 'author',
             width: '5%',
-            sortable: true,
+            sortable: false,
             display: function (row) {
                 return row.author.slice(5, 9);
             },
@@ -67,7 +66,6 @@ const table = reactive({
     },
 });
 const doSearch = (offset, limit, order, sort) => {
-    table.isLoading = true;
     store.dispatch('posts/fetchPaginatedPosts', {
         offset: offset,
         limit: limit,
@@ -80,7 +78,13 @@ const doSearch = (offset, limit, order, sort) => {
 };
 
 const tableLoadingFinish = () => {
-    table.isLoading = false;
+    // table.isLoading = false;
+};
+
+const updateCheckedRows = (rowsKey) => {
+    checkedRowsIds = rowsKey;
+    const number = checkedRowsIds.length;
+    console.log('Checked: ' + checkedRowsIds.length + (number == 1 ? 'row' : 'rows'));
 };
 </script>
 
@@ -88,6 +92,7 @@ const tableLoadingFinish = () => {
     <v-container class="page">
         <h1 class="text-h4">vue3-table-light</h1>
         <vue-table-lite
+            :has-checkbox="table.hasCheckbox"
             :is-loading="table.isLoading"
             :columns="table.columns"
             :rows="table.rows"
@@ -96,6 +101,7 @@ const tableLoadingFinish = () => {
             :messages="table.messages"
             @do-search="doSearch"
             @is-finished="tableLoadingFinish"
+            @return-checked-rows="updateCheckedRows"
         ></vue-table-lite>
     </v-container>
 </template>
