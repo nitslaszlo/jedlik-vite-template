@@ -51,7 +51,7 @@ const table = reactive({
         {
             label: 'Content',
             field: 'content',
-            width: '60%',
+            width: '55%',
             sortable: true,
             display: function (row) {
                 return row.content.slice(0, 71) + '...';
@@ -60,7 +60,7 @@ const table = reactive({
         {
             label: 'Edit',
             field: 'quick',
-            width: '10%',
+            width: '5%',
             display: function (row) {
                 return `<button type="button" data-id="${row._id}" class="is-rows-el quick-btn">Edit</button>`;
             },
