@@ -144,4 +144,13 @@ const updateCheckedRows = (rowsKey) => {
     background-color: lightgray;
     border-style: solid;
 }
+
+.card ::v-deep(.table tr:nth-child(even)) {
+  background-color: #f2f2f2;
+}
+
+.card ::v-deep(.table tr:hover) {
+  background-color: #ddd;
+}
+
 </style>
