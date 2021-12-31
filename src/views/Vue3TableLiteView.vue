@@ -57,6 +57,14 @@ const table = reactive({
                 return row.content.slice(0, 71) + '...';
             },
         },
+        {
+            label: 'Edit',
+            field: 'quick',
+            width: '10%',
+            display: function (row) {
+                return `<button type="button" data-id="${row._id}" class="is-rows-el quick-btn">Edit</button>`;
+            },
+        },
     ],
     rows: posts,
     totalRecordCount: numberOfPosts,
@@ -85,8 +93,15 @@ const doSearch = (offset, limit, order, sort) => {
     table.sortable.sort = sort;
 };
 
-const tableLoadingFinish = () => {
+const tableLoadingFinish = (elements) => {
     // table.isLoading = false;
+    Array.prototype.forEach.call(elements, function (element) {
+        if (element.classList.contains('quick-btn')) {
+            element.addEventListener('click', function () {
+                console.log(this.dataset.id + ' quick-btn click!!');
+            });
+        }
+    });
 };
 
 const updateCheckedRows = (rowsKey) => {
@@ -118,12 +133,15 @@ const updateCheckedRows = (rowsKey) => {
 
 <style scoped>
 .card ::v-deep(.table .thead-dark th) {
-    color: #fff;
-    background-color: #42b983;
-    border-color: #42b983;
+  color: #fff;
+  background-color: #42b983;
+  border-color: #42b983;
 }
-.card ::v-deep(.table td),
-.card ::v-deep(.table tr) {
-    border: 1px solid #42b983;
+.card ::v-deep(.table td), .card ::v-deep(.table tr) {
+  border: 1px solid #42b983;
+}
+.card ::v-deep(.quick-btn) {
+    background-color: lightgray;
+    border-style: solid;
 }
 </style>
