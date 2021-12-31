@@ -1,6 +1,6 @@
 <script setup>
 import VueTableLite from 'vue3-table-lite';
-import { onMounted, reactive, computed } from 'vue';
+import { onMounted, ref, reactive, computed, watch } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 const posts = computed(() => store.getters['posts/getPosts']);
@@ -9,8 +9,14 @@ const isLoading = computed(() => store.getters['posts/getLoading']);
 
 let checkedRowsIds = [];
 
+const searchTerm = ref(''); // Search text
+
+watch(searchTerm, () => {
+    doSearch('0', table.pageSize, table.sortable.order, table.sortable.sort);
+});
+
 onMounted(() => {
-    doSearch('0', '10', 'title', 'asc');
+    doSearch('0', 10, 'title', 'asc');
 });
 
 const table = reactive({
@@ -64,6 +70,7 @@ const table = reactive({
         gotoPageLabel: 'Ugrás: ',
         noDataAvailable: 'Nincsenek adatok!',
     },
+    pageSize: 10,
 });
 const doSearch = (offset, limit, order, sort) => {
     store.dispatch('posts/fetchPaginatedPosts', {
@@ -71,8 +78,9 @@ const doSearch = (offset, limit, order, sort) => {
         limit: limit,
         order: order,
         sort: sort == 'asc' ? '1' : '-1',
+        keyword: searchTerm.value,
     });
-    table.totalRecordCount = numberOfPosts;
+    table.pageSize = parseInt(limit);
     table.sortable.order = order;
     table.sortable.sort = sort;
 };
@@ -90,7 +98,8 @@ const updateCheckedRows = (rowsKey) => {
 
 <template>
     <v-container class="page">
-        <h1 class="text-h4">vue3-table-light</h1>
+        <h1 class="text-h4 ma-3">vue3-table-light</h1>
+        <v-text-field v-model="searchTerm" label="Kérem a keresendő szórészletet!"></v-text-field>
         <vue-table-lite
             :has-checkbox="table.hasCheckbox"
             :is-loading="table.isLoading"
@@ -99,6 +108,7 @@ const updateCheckedRows = (rowsKey) => {
             :total="table.totalRecordCount"
             :sortable="table.sortable"
             :messages="table.messages"
+            :page-size="table.pageSize"
             @do-search="doSearch"
             @is-finished="tableLoadingFinish"
             @return-checked-rows="updateCheckedRows"

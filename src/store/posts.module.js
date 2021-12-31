@@ -33,27 +33,15 @@ export default {
         },
     },
     actions: {
-        async fetchNumberOfPosts(context) {
-            $axios
-                .get('posts/count/of')
-                .then((res) => {
-                    if (res && res.data) {
-                        context.commit('setNumberOfPosts', res.data.countOfPosts);
-                    }
-                })
-                .catch((error) => {
-                    console.error('hiba: ' + error);
-                });
-        },
         async fetchPosts(context) {
-            // init local items storage
             context.commit('setLoading', true);
-            await context.dispatch('fetchNumberOfPosts');
+            // await context.dispatch('fetchNumberOfPosts');
             $axios
                 .get('posts')
                 .then((res) => {
                     if (res && res.data) {
-                        context.commit('loadPosts', res.data);
+                        context.commit('loadPosts', res.data.posts);
+                        context.commit('setNumberOfPosts', res.data.count);
                     }
                     context.commit('setLoading', false);
                 })
@@ -61,17 +49,16 @@ export default {
                     console.error('hiba: ' + error);
                     context.commit('setLoading', false);
                 });
-            // make the request
         },
         async fetchPaginatedPosts(context, params) {
-            // init local items storage
             context.commit('setLoading', true);
-            await context.dispatch('fetchNumberOfPosts');
+            // await context.dispatch('fetchNumberOfPosts');
             $axios
-                .get(`posts/${params.offset}/${params.limit}/${params.order}/${params.sort}`)
+                .get(`posts/${params.offset}/${params.limit}/${params.order}/${params.sort}/${params.keyword}`)
                 .then((res) => {
                     if (res && res.data) {
-                        context.commit('loadPosts', res.data);
+                        context.commit('loadPosts', res.data.posts);
+                        context.commit('setNumberOfPosts', res.data.count);
                     }
                     context.commit('setLoading', false);
                 })
