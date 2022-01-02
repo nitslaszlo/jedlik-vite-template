@@ -11,7 +11,9 @@ function updateCart(id) {
 
 <template>
     <div class="page">
-        <div class="nav-bar"></div>
+        <div class="nav-bar">
+            Vue Mastery - Intro to Vue 3 course example in composition API (script setup)
+        </div>
         <div class="cart">Cart({{ r.cart.length }})</div>
         <product-display :premium="r.premium" @add-to-cart="updateCart"></product-display>
     </div>
@@ -37,8 +39,10 @@ function updateCart(id) {
 }
 
 .nav-bar {
+    font-size: 1.6vw;
+    padding: 1vw;
     background: linear-gradient(-90deg, #84cf6a, #16c0b0);
-    height: 60px;
+    height: 4vw;
     margin-bottom: 25px;
     -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
     -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
