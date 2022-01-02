@@ -4,7 +4,8 @@
         "esbenp.prettier-vscode",
         "pkief.material-icon-theme",
         "dbaeumer.vscode-eslint",
-        "coenraads.bracket-pair-colorizer-2",
-        "antfu.iconify"
+        "antfu.iconify",
+        "christian-kohler.path-intellisense",
+        "tomoki1207.pdf"
     ]
 }
