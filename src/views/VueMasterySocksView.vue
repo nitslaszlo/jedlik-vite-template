@@ -10,11 +10,11 @@ function updateCart(id) {
 </script>
 
 <template>
-    <v-container class="page">
+    <div class="page">
         <div class="nav-bar"></div>
         <div class="cart">Cart({{ r.cart.length }})</div>
         <product-display :premium="r.premium" @add-to-cart="updateCart"></product-display>
-    </v-container>
+    </div>
 </template>
 
 <style scoped>

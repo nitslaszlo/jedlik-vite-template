@@ -28,8 +28,8 @@ const menuItems = ref([
         route: '/v3table',
     },
       {
-        icon: 'mdi-table-refresh',
-        text: 'socks',
+        icon: 'mdi-cart-outline',
+        text: 'Vue Mastery Socks',
         route: '/socks',
     },
     {

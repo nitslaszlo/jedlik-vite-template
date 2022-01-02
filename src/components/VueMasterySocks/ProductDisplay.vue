@@ -28,7 +28,7 @@ const r = reactive({
             id: 2234,
             color: 'green',
             image: sockGreen,
-            quantity: 10,
+            quantity: 5,
         },
         {
             id: 2235,
@@ -52,6 +52,10 @@ const shipping = computed(() => {
 function addToCart() {
     emits('add-to-cart', r.variants[r.selectedVariant].id);
     r.variants[r.selectedVariant].quantity -= 1; // It was not in +L11-End" branch
+}
+
+function refillStock() {
+    r.variants[r.selectedVariant].quantity = 10; // It was not in +L11-End" branch
 }
 
 function updateVariant(index) {
@@ -85,7 +89,7 @@ function addReview(review) {
                     v-for="(variant, index) in r.variants"
                     :key="variant.id"
                     class="color-circle"
-                    :style="{ backgroundColor: variant.color }"
+                    :style="{ backgroundColor: variant.quantity != 0 ? variant.color : '#f2f2f2' }"
                     @mouseover="updateVariant(index)"
                 ></div>
 
@@ -97,6 +101,14 @@ function addReview(review) {
                 >
                     Add to Cart
                 </button>
+                <button
+                    class="button"
+                    :class="{ disabledButton: inStock }"
+                    :disabled="inStock"
+                    @click="refillStock"
+                >
+                    Refill stock
+                </button>
             </div>
         </div>
         <review-list v-if="r.reviews.length" :reviews="r.reviews"></review-list>
@@ -106,7 +118,7 @@ function addReview(review) {
 
 <style scoped>
 h1 {
-    font-size: 50px;
+    font-size: 38px;
 }
 
 img {
@@ -133,14 +145,14 @@ li {
 }
 
 .button {
-    margin: 30px;
+    margin: 10px;
     background-color: #39495c;
     border-radius: 5px;
     font-size: 18px;
-    width: 160px;
+    width: 150px;
     height: 60px;
     color: white;
-    padding: 20px;
+    padding: 10px;
     box-shadow: inset 0 -0.6em 1em -0.35em rgba(0, 0, 0, 0.17),
         inset 0 0.6em 2em -0.3em rgba(255, 255, 255, 0.15),
         inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
