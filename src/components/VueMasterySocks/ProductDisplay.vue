@@ -2,6 +2,8 @@
 import ReviewForm from './ReviewForm.vue';
 import ReviewList from './ReviewList.vue';
 import { computed, reactive } from 'vue';
+import sockBlue from "./../../assets/socks_blue.jpg";
+import sockGreen from "./../../assets/socks_green.jpg";
 
 // defineProps is compiler macro, only usable inside <script setup>, do not need to be imported
 // eslint-disable-next-line no-undef
@@ -25,13 +27,13 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: './../../assets/socks_green.jpg',
+            image: sockGreen,
             quantity: 10,
         },
         {
             id: 2235,
             color: 'blue',
-            image: './../../assets/socks_blue.jpg',
+            image: sockBlue,
             quantity: 5,
         },
     ],
