@@ -7,6 +7,7 @@ import VTableView from './views/VTableView.vue';
 import AboutView from './views/AboutView.vue';
 import GridView from './views/GridView.vue';
 import Vue3TableLiteView from './views/Vue3TableLiteView.vue'
+import VueMasterySocksView from './views/VueMasterySocksView.vue'
 
 export default createRouter({
     history: createWebHistory(),
@@ -30,6 +31,10 @@ export default createRouter({
         {
             path: '/v3table',
             component: Vue3TableLiteView,
+        },
+        {
+            path: '/socks',
+            component: VueMasterySocksView,
         },
         {
             path: '/grid',

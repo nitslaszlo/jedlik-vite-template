@@ -27,6 +27,11 @@ const menuItems = ref([
         text: 'vue3-table-light',
         route: '/v3table',
     },
+      {
+        icon: 'mdi-table-refresh',
+        text: 'socks',
+        route: '/socks',
+    },
     {
         icon: 'mdi-grid',
         text: 'Grid demo',
