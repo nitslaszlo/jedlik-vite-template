@@ -25,13 +25,13 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: './../../src/assets/socks_green.jpg',
+            image: './../../../src/assets/socks_green.jpg',
             quantity: 10,
         },
         {
             id: 2235,
             color: 'blue',
-            image: './../../src/assets/socks_blue.jpg',
+            image: './../../../src/assets/socks_blue.jpg',
             quantity: 5,
         },
     ],
