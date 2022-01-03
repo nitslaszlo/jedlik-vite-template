@@ -2,8 +2,8 @@
 import ReviewForm from './ReviewForm.vue';
 import ReviewList from './ReviewList.vue';
 import { computed, reactive } from 'vue';
-import sockBlue from "./../../assets/socks_blue.jpg";
-import sockGreen from "./../../assets/socks_green.jpg";
+// import sockBlue from './../../assets/socks_blue.jpg';
+// import sockGreen from './../../assets/socks_green.jpg';
 
 // defineProps is compiler macro, only usable inside <script setup>, do not need to be imported
 // eslint-disable-next-line no-undef
@@ -27,20 +27,23 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: sockGreen,
+            image: './../../assets/socks_green.jpg',
             quantity: 5,
         },
         {
             id: 2235,
             color: 'blue',
-            image: sockBlue,
+            image: './../../assets/socks_blue.jpg',
             quantity: 5,
         },
     ],
     reviews: [],
 });
 const title = computed(() => r.brand + ' ' + r.product);
-const image = computed(() => r.variants[r.selectedVariant].image);
+const image = computed(() => {
+    const imgUrl = new URL(r.variants[r.selectedVariant].image, import.meta.url);
+    return imgUrl
+});
 const inStock = computed(() => r.variants[r.selectedVariant].quantity);
 const shipping = computed(() => {
     if (props.premium) {
@@ -65,7 +68,6 @@ function updateVariant(index) {
 function addReview(review) {
     r.reviews.push(review);
 }
-
 </script>
 
 <template>
@@ -137,7 +139,7 @@ p {
 
 ul {
     margin-left: 20px;
-  list-style-type: none;
+    list-style-type: none;
 }
 
 li {
@@ -190,18 +192,18 @@ li {
 }
 
 @media only screen and (max-width: 600px) {
-  .product-display {
-    flex-direction: column;
-  }
+    .product-display {
+        flex-direction: column;
+    }
 
-  .product-image,
-  .product-info {
-    margin-left: 10px;
-    width: 100%;
-  }
+    .product-image,
+    .product-info {
+        margin-left: 10px;
+        width: 100%;
+    }
 
-  .review-form {
-    width: 90%;
-  }
+    .review-form {
+        width: 90%;
+    }
 }
 </style>
