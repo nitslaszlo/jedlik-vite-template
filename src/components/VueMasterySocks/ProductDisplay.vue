@@ -2,8 +2,6 @@
 import ReviewForm from './ReviewForm.vue';
 import ReviewList from './ReviewList.vue';
 import { computed, reactive } from 'vue';
-// import socksBlue from './../../assets/socks_blue.jpg';
-// import socksGreen from './../../assets/socks_green.jpg';
 const images = import.meta.globEager('/src/assets/*.jpg');
 
 // defineProps is compiler macro, only usable inside <script setup>, do not need to be imported
