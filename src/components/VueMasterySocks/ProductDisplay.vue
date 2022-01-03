@@ -2,8 +2,8 @@
 import ReviewForm from './ReviewForm.vue';
 import ReviewList from './ReviewList.vue';
 import { computed, reactive } from 'vue';
-// import sockBlue from './../../assets/socks_blue.jpg';
-// import sockGreen from './../../assets/socks_green.jpg';
+import socksBlue from './../../assets/socks_blue.jpg';
+import socksGreen from './../../assets/socks_green.jpg';
 
 // defineProps is compiler macro, only usable inside <script setup>, do not need to be imported
 // eslint-disable-next-line no-undef
@@ -27,23 +27,20 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: './../../../assets/socks_green.jpg',
+            image: socksGreen,
             quantity: 5,
         },
         {
             id: 2235,
             color: 'blue',
-            image: './../../../assets/socks_blue.jpg',
+            image: socksBlue,
             quantity: 5,
         },
     ],
     reviews: [],
 });
 const title = computed(() => r.brand + ' ' + r.product);
-const image = computed(() => {
-    return r.variants[r.selectedVariant].image;
-});
-
+const image = computed(() => r.variants[r.selectedVariant].image);
 const inStock = computed(() => r.variants[r.selectedVariant].quantity);
 const shipping = computed(() => {
     if (props.premium) {
