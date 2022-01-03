@@ -40,10 +40,7 @@ const r = reactive({
     reviews: [],
 });
 const title = computed(() => r.brand + ' ' + r.product);
-const image = computed(() => {
-    const imgUrl = new URL(r.variants[r.selectedVariant].image, import.meta.url);
-    return imgUrl
-});
+const image = computed(() => new URL(r.variants[r.selectedVariant].image, import.meta.url).href);
 const inStock = computed(() => r.variants[r.selectedVariant].quantity);
 const shipping = computed(() => {
     if (props.premium) {
