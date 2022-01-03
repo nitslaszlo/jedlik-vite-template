@@ -3,7 +3,7 @@
 
 <template>
     <v-container class="page text-center">
-        <img src="./../assets/Jedlik.png" />
+        <img src="/src/assets/Jedlik.png" />
         <h1>This is about us!</h1>
 
         <v-btn color="primary" to="/" class="mt-3"> Back to home </v-btn>

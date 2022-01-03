@@ -2,8 +2,9 @@
 import ReviewForm from './ReviewForm.vue';
 import ReviewList from './ReviewList.vue';
 import { computed, reactive } from 'vue';
-import socksBlue from './../../assets/socks_blue.jpg';
-import socksGreen from './../../assets/socks_green.jpg';
+// import socksBlue from './../../assets/socks_blue.jpg';
+// import socksGreen from './../../assets/socks_green.jpg';
+const images = import.meta.globEager('/src/assets/*.jpg');
 
 // defineProps is compiler macro, only usable inside <script setup>, do not need to be imported
 // eslint-disable-next-line no-undef
@@ -27,20 +28,20 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: socksGreen,
+            image: '/src/assets/socks_green.jpg',
             quantity: 5,
         },
         {
             id: 2235,
             color: 'blue',
-            image: socksBlue,
+            image: '/src/assets/socks_blue.jpg',
             quantity: 5,
         },
     ],
     reviews: [],
 });
 const title = computed(() => r.brand + ' ' + r.product);
-const image = computed(() => r.variants[r.selectedVariant].image);
+const image = computed(() => images[r.variants[r.selectedVariant].image].default);
 const inStock = computed(() => r.variants[r.selectedVariant].quantity);
 const shipping = computed(() => {
     if (props.premium) {
