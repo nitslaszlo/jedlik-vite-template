@@ -27,20 +27,23 @@ const r = reactive({
         {
             id: 2234,
             color: 'green',
-            image: './../../assets/socks_green.jpg',
+            image: './../../../assets/socks_green.jpg',
             quantity: 5,
         },
         {
             id: 2235,
             color: 'blue',
-            image: './../../assets/socks_blue.jpg',
+            image: './../../../assets/socks_blue.jpg',
             quantity: 5,
         },
     ],
     reviews: [],
 });
 const title = computed(() => r.brand + ' ' + r.product);
-const image = computed(() => new URL(r.variants[r.selectedVariant].image, import.meta.url).href);
+const image = computed(() => {
+    return r.variants[r.selectedVariant].image;
+});
+
 const inStock = computed(() => r.variants[r.selectedVariant].quantity);
 const shipping = computed(() => {
     if (props.premium) {
