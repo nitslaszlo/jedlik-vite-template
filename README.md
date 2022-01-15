@@ -1,4 +1,4 @@
-# Vite Template
+# Vite Template new
 
 Base:
 https://github.com/yooneskh/vite-tauri-template
